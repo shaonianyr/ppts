@@ -12,6 +12,9 @@ const { RELEVANT_STATS } = require('./constants');
  * @return {string} The ready to display table.
  */
 const buildTable = data => {
+    console.log(chalk.green("========================================================================================"));
+    console.log(chalk.red.bold("                       performance-puppeteer-test 网页性能测试                        "));
+    console.log(chalk.green("========================================================================================"));
     const head = [''].concat(RELEVANT_STATS.map(stat => chalk.blue(stat)));
 
     for (const key in data) {
