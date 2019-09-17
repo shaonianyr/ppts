@@ -1,0 +1,26 @@
+{
+  "name": "ppt",
+  "version": "1.0.0",
+  "description": "performance-puppeteer-test",
+  "author": "Shaonian <licetianyr@163.com>",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/ShaoNianyr/ppt"
+  },
+  "bugs": {
+      "url": "https://github.com/ShaoNianyr/ppt/issues"
+  },
+  "main": "index.js",
+  "bin": {
+      "ppt": "./cli.js"
+  },
+  "keywords": [
+      "performance",
+      "puppeteer",
+      "test",
+      "cli"
+  ],
+  "license": "MIT",
+  "dependencies": {
+  }
+}
