@@ -23,10 +23,9 @@ const extractPerformanceMetrics = async (pageMetrics, page, client) => {
     const extratedData = {
         jsHeapUsedSize: translatedMetrics.JSHeapUsedSize,
         jsHeapTotalSize: translatedMetrics.JSHeapTotalSize,
-        scriptDuration: translatedMetrics.ScriptDuration * 1000,
+        ...(await extractPageTimings1(page)),
         firstMeaningfulPaint: getRelevantTime(firstMeaningfulPaint, navigationStart),
-        domContentLoaded: getRelevantTime(translatedMetrics.DomContentLoaded, navigationStart),
-        ...(await extractPageTimings(page)),
+        ...(await extractPageTimings2(page)),
     };
 
     populateDataObject(pageMetrics, extratedData);
@@ -38,27 +37,34 @@ const extractPerformanceMetrics = async (pageMetrics, page, client) => {
  * @param  {Object} page The puppeteer page instance we are working with.
  * @return {Object} The extracted relevant metrics.
  */
-const extractPageTimings = async page => {
+const extractPageTimings1 = async page => {
     // Get timing performance metrics from the `window` object.
     const performanceTimings = JSON.parse(await page.evaluate(() => JSON.stringify(window.performance.timing)));
-    const paintTimings = JSON.parse(await page.evaluate(() => JSON.stringify(performance.getEntriesByType('paint'))));
 
     const navigationStart = performanceTimings.navigationStart;
-    const relevantDataKeys = ['domInteractive', 'loadEventEnd', 'responseEnd'];
+    const relevantData = {};
+
+    relevantData['firstPaint'] = performanceTimings.responseStart - navigationStart;
+
+    return {
+        firstPaint: relevantData.firstPaint,
+    };
+};
+
+const extractPageTimings2 = async page => {
+    // Get timing performance metrics from the `window` object.
+    const performanceTimings = JSON.parse(await page.evaluate(() => JSON.stringify(window.performance.timing)));
+ 
+    const navigationStart = performanceTimings.navigationStart;
+    const relevantDataKeys = ['domContentLoadedEventEnd', 'loadEventEnd'];
     const relevantData = {};
 
     relevantDataKeys.forEach(name => {
         relevantData[name] = performanceTimings[name] - navigationStart;
     });
 
-    paintTimings.forEach(timing => {
-        relevantData[toCamelCase(timing.name)] = timing.startTime;
-    });
-
     return {
-        firstPaint: relevantData.firstPaint,
-        firstContentfulPaint: relevantData.firstContentfulPaint,
-        responseEnd: relevantData.responseEnd,
+        domContentLoaded: relevantData.domContentLoadedEventEnd,
         loadEventEnd: relevantData.loadEventEnd,
     };
 };

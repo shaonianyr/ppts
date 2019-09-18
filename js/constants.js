@@ -14,7 +14,7 @@ const DEFAULT_OUTPUT_FORMAT = {
 
 const OUTPUT_FORMATS = ['raw', 'json', 'table', 'csv'];
 
-const RELEVANT_STATS = ['average', 'median', 'min', 'max', 'standardDeviation'];
+const RELEVANT_STATS = ['min', 'median', 'max', 'average', 'standardDeviation'];
 
 const URL_REGEX = /([a-z]{1,2}tps?):\/\/((?:(?!(?:\/|#|\?|&)).)+)(?:(\/(?:(?:(?:(?!(?:#|\?|&)).)+\/))?))?(?:((?:(?!(?:\.|$|\?|#)).)+))?(?:(\.(?:(?!(?:\?|$|#)).)+))?(?:(\?(?:(?!(?:$|#)).)+))?(?:(#.+))?/g;
 
