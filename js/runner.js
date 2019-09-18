@@ -13,12 +13,16 @@ const { buildStats } = require('./utils');
  * @param  {Function} logStep   Functions to display the correct step in the console.
  * @return {Object}   Statistics about collected metrics.
  */
-module.exports = async (page, client, repeat, waitUntil = 'load', logStep) => {
+module.exports = async (page, client, repeat, waitUntil = 'load', logStep, cache) => {
     let i = 0;
     const pageMetrics = {};
 
     while (i < repeat) {
         logStep(i + 1, repeat);
+
+        await page.setCacheEnabled(cache);
+
+        // console.log(cache);
 
         await page.reload({
             waitUntil: waitUntil.split(','),

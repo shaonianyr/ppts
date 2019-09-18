@@ -2,6 +2,8 @@ const BYTES_BASED_VALUES = ['jsHeapUsedSize', 'jsHeapTotalSize'];
 
 const DEFAULT_REPEAT_TIMES = 5;
 
+const DEFAULT_CACHE = false;
+
 const DEFAULT_VIEWPORT_SIZE = {
     HEIGHT: '1080',
     WIDTH: '1920',
@@ -20,6 +22,7 @@ const URL_REGEX = /([a-z]{1,2}tps?):\/\/((?:(?!(?:\/|#|\?|&)).)+)(?:(\/(?:(?:(?:
 
 module.exports = {
     BYTES_BASED_VALUES,
+    DEFAULT_CACHE,
     DEFAULT_VIEWPORT_SIZE,
     DEFAULT_REPEAT_TIMES,
     DEFAULT_OUTPUT_FORMAT,

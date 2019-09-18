@@ -9,6 +9,7 @@ const {
     DEFAULT_OUTPUT_FORMAT,
     OUTPUT_FORMATS,
     URL_REGEX,
+    DEFAULT_CACHE,
 } = require('./js/constants');
 
 const output = require('./js/output');
@@ -19,6 +20,7 @@ module.exports = async function start(
         repeat = DEFAULT_REPEAT_TIMES,
         height = DEFAULT_VIEWPORT_SIZE.HEIGHT,
         width = DEFAULT_VIEWPORT_SIZE.WIDTH,
+        cache = DEFAULT_CACHE,
         outputFormat = DEFAULT_OUTPUT_FORMAT.DEFAULT,
         outputFile = false,
         customPath,
@@ -39,7 +41,7 @@ module.exports = async function start(
 
     const spinner = ora('Launching Browser').start();
 
-    const logStep = (step, repeat) => {
+    const logStep = (step, repeat, cache) => {
         spinner.text = `Extracting metrics ${step}/${repeat}`;
     };
 
@@ -55,10 +57,12 @@ module.exports = async function start(
     const page = await browser.newPage();
 
     // Set the viewport.
+
     await page.setViewport({
         width: parseInt(width, 10),
         height: parseInt(height, 10),
     });
+    
 
     try {
         let client;
@@ -78,7 +82,7 @@ module.exports = async function start(
             await client.send('Performance.enable');
         }
 
-        const aggregatedData = await runMetricsExtracter(page, client, repeat, waitUntil, logStep);
+        const aggregatedData = await runMetricsExtracter(page, client, repeat, waitUntil, logStep, cache);
 
         spinner.stop();
 
