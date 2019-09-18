@@ -41,7 +41,7 @@ module.exports = async function start(
 
     const spinner = ora('Launching Browser').start();
 
-    const logStep = (step, repeat, cache) => {
+    const logStep = (step, repeat) => {
         spinner.text = `Extracting metrics ${step}/${repeat}`;
     };
 
