@@ -1,31 +1,35 @@
 {
-    "name": "ppts",
-    "version": "1.0.0",
-    "description": "performance-puppeteer-tests",
-    "author": "Shaonian <licetianyr@163.com>",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ShaoNianyr/ppt"
-    },
-    "bugs": {
-        "url": "https://github.com/ShaoNianyr/ppt/issues"
-    },
-    "main": "index.js",
-    "bin": {
-        "ppt": "./cli.js"
-    },
-    "keywords": [
-        "performance",
-        "puppeteer",
-        "test",
-        "cli"
-    ],
-    "license": "MIT",
-    "dependencies": {
-        "chalk": "^2.4.2",
-        "cli-table": "^0.3.1",
-        "commander": "^3.0.1",
-        "ora": "^3.4.0",
-        "puppeteer": "^1.20.0"
-    }
+  "name": "ppts",
+  "version": "1.0.0",
+  "description": "performance-puppeteer-tests",
+  "author": "Shaonian <licetianyr@163.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShaoNianyr/ppts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShaoNianyr/ppts/issues"
+  },
+  "main": "index.js",
+  "bin": {
+    "ppts": "./cli.js"
+  },
+  "keywords": [
+    "performance",
+    "puppeteer",
+    "test",
+    "cli"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "cli-table": "^0.3.1",
+    "commander": "^3.0.1",
+    "ora": "^3.4.0",
+    "puppeteer": "^1.20.0"
+  },
+  "homepage": "https://github.com/ShaoNianyr/ppts#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
