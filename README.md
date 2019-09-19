@@ -75,11 +75,10 @@ ppts https://www.baidu.com --no-headless false
 ```
 
 ### Setting complex actions as extend customs (Such as: login.js)
-<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/mubu.png">
-
 ```shell
 ppts -c './login.js' https://mubu.com
 ```
+<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/mubu.png">
 <img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/view_the_index_after_login.png">
 
 ### Setting with cache
