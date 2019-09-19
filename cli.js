@@ -9,7 +9,7 @@ const start = require('./');
 const { DEFAULT_REPEAT_TIMES, DEFAULT_CACHE, DEFAULT_OUTPUT_FORMAT, DEFAULT_VIEWPORT_SIZE } = require('./js/constants');
 
 program
-    .description('Description:\n  performance-puppeteer-test\n\nAuthor:\n  Shaonian <licetianyr@163.com>')
+    .description('Description:\n  performance-puppeteer-tests\n\nAuthor:\n  Shaonian <licetianyr@163.com>')
     .usage('<url> [options] ')
     .arguments('<url>')
     .action(url => {

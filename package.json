@@ -1,7 +1,7 @@
 {
-    "name": "ppt",
+    "name": "ppts",
     "version": "1.0.0",
-    "description": "performance-puppeteer-test",
+    "description": "performance-puppeteer-tests",
     "author": "Shaonian <licetianyr@163.com>",
     "repository": {
         "type": "git",
