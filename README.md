@@ -2,7 +2,7 @@
 
 performance-puppeteer-tests
 
-<img src="https://raw.githubusercontent.com/ShaoNianyr/ppts/master/picture/Usage_Options.png">
+<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/Usage_Options.png">
 
 ## Installation
 
@@ -67,13 +67,20 @@ Several options are available to enhance metrics easily. Use `-h (--help)` to di
 ```shell
 ppts -r 100 https://www.baidu.com
 ```
-
-<img src="https://raw.githubusercontent.com/ShaoNianyr/ppts/master/picture/Settings_repeat_times.png">
+<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/Settings_repeat_times.png">
 
 ### Setting no-headless
 ```shell
 ppts https://www.baidu.com --no-headless false
 ```
+
+### Setting complex actions as extend customs (Such as: login.js)
+<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/mubu.png">
+
+```shell
+ppts -c './login.js' https://mubu.com
+```
+<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/view_the_index_after_login.png">
 
 ### Setting with cache
 ```shell
@@ -82,11 +89,11 @@ ppts https://www.baidu.com --cache true
 
 ### Setting with phone mode
 ```shell
-ppts https://www.baidu.com --phone 'iPhone X'
+ppts https://www.baidu.com --phone 'iPhone X' --no-headless false
 ```
-<img src="https://raw.githubusercontent.com/ShaoNianyr/ppts/master/picture/Setting_phone_mode_with_iPhone_X.png">
+<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/Setting_phone_mode_with_iPhone_X.png">
 
-<img src="https://raw.githubusercontent.com/ShaoNianyr/ppts/master/picture/Setting_phone_errors.png">
+<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/Setting_phone_errors.png">
 
 #### Support devices
 ```console
