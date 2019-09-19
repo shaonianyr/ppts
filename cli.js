@@ -24,7 +24,7 @@ program
     .option('--output-file [output-file]', '输出报告文件（default: txt）')
     .option('--wait-until [wait-until]', '加载完成的标志（default: load）')
     .option('--no-headless', '浏览器无头模式（default: true）')
-    .option('--no-sandbox', 'Linux 系统下无沙盒模式（default: true）')
+    .option('--no-sandbox', '适配Linux无沙盒模式（default: false）')
     .parse(process.argv);
 
 const errorHandler = error => {

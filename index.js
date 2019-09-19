@@ -26,7 +26,7 @@ module.exports = async function start(
         customPath,
         waitUntil,
         headless = true,
-        sandbox = true,
+        sandbox = false,
     },
     errorHandler,
 ) {
@@ -51,8 +51,10 @@ module.exports = async function start(
 
     const browser = await puppeteer.launch({
         headless,
-        args: sandbox ? undefined : ['--no-sandbox'],
+        args: sandbox ? ['--start-maximized'] : ['--start-maximized', '--no-sandbox'],
     });
+
+    // console.log(browser);
 
     const page = await browser.newPage();
 
