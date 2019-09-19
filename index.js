@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const devices = require('puppeteer/DeviceDescriptors')
 const ora = require('ora');
 
 const runMetricsExtracter = require('./js/runner');
@@ -21,6 +22,7 @@ module.exports = async function start(
         height = DEFAULT_VIEWPORT_SIZE.HEIGHT,
         width = DEFAULT_VIEWPORT_SIZE.WIDTH,
         cache = DEFAULT_CACHE,
+        phone = null,
         outputFormat = DEFAULT_OUTPUT_FORMAT.DEFAULT,
         outputFile = false,
         customPath,
@@ -49,50 +51,90 @@ module.exports = async function start(
         spinner.text = log;
     };
 
-    const browser = await puppeteer.launch({
-        headless,
-        args: sandbox ? ['--start-maximized'] : ['--start-maximized', '--no-sandbox'],
-    });
+    if (phone === null) {
+        const browser = await puppeteer.launch({
+            headless,
+            args: sandbox ? ['--start-maximized'] : ['--start-maximized', '--no-sandbox'],
+        });
+        const page = await browser.newPage();
+        await page.setViewport({
+            width: parseInt(width, 10),
+            height: parseInt(height, 10),
+        });
+        try {
+            let client;
 
-    // console.log(browser);
+            if (customPath) {
+                const customPathFunction = require(customPath);
+                await customPathFunction(page, logInfo);
+            }
 
-    const page = await browser.newPage();
+            // If we want tu use a custom url, reach it before making metrics.
+            logInfo(`Testing ${url}...`);
 
-    // Set the viewport.
+            await page.goto(url).catch(errorHandler);
 
-    await page.setViewport({
-        width: parseInt(width, 10),
-        height: parseInt(height, 10),
-    });
-    
+            if (!client) {
+                client = await page.target().createCDPSession();
+                await client.send('Performance.enable');
+            }
 
-    try {
-        let client;
+            const aggregatedData = await runMetricsExtracter(page, client, repeat, waitUntil, logStep, cache);
 
-        if (customPath) {
-            const customPathFunction = require(customPath);
-            await customPathFunction(page, logInfo);
+            spinner.stop();
+
+            await browser.close();
+
+            return output(aggregatedData, outputFormat, outputFile);
+        } catch (error) {
+            await browser.close();
+            errorHandler(error);
         }
-
-        // If we want tu use a custom url, reach it before making metrics.
-        logInfo(`Testing ${url}...`);
-
-        await page.goto(url).catch(errorHandler);
-
-        if (!client) {
-            client = await page.target().createCDPSession();
-            await client.send('Performance.enable');
+    } else {
+        const browser = await puppeteer.launch({
+            headless,
+            args: sandbox ? undefined : ['--no-sandbox'],
+        });
+        const page = await browser.newPage();
+        try {
+            await page.emulate(devices[phone]);
+        } catch (error) {
+            console.log('可能错误： 1. 你输入的机型不存在 2.你输入的机型格式有误 3.暂不支持该机型');
+            console.log('支持的机型有：');
+            devices.forEach(function(item) {
+                console.log(item.name);
+            });
+            await browser.close();
+            errorHandler(error);
         }
+        try {
+            let client;
 
-        const aggregatedData = await runMetricsExtracter(page, client, repeat, waitUntil, logStep, cache);
+            if (customPath) {
+                const customPathFunction = require(customPath);
+                await customPathFunction(page, logInfo);
+            }
 
-        spinner.stop();
+            // If we want tu use a custom url, reach it before making metrics.
+            logInfo(`Testing ${url}...`);
 
-        await browser.close();
+            await page.goto(url).catch(errorHandler);
 
-        return output(aggregatedData, outputFormat, outputFile);
-    } catch (error) {
-        await browser.close();
-        errorHandler(error);
+            if (!client) {
+                client = await page.target().createCDPSession();
+                await client.send('Performance.enable');
+            }
+
+            const aggregatedData = await runMetricsExtracter(page, client, repeat, waitUntil, logStep, cache);
+
+            spinner.stop();
+
+            await browser.close();
+
+            return output(aggregatedData, outputFormat, outputFile);
+        } catch (error) {
+            await browser.close();
+            errorHandler(error);
+        }
     }
 };

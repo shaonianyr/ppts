@@ -9,7 +9,7 @@ const start = require('./');
 const { DEFAULT_REPEAT_TIMES, DEFAULT_CACHE, DEFAULT_OUTPUT_FORMAT, DEFAULT_VIEWPORT_SIZE } = require('./js/constants');
 
 program
-    .description('description:\n  performance-puppeteer-test\nauthor:\n  Shaonian <licetianyr@163.com>')
+    .description('Description:\n  performance-puppeteer-test\n\nAuthor:\n  Shaonian <licetianyr@163.com>')
     .usage('<url> [options] ')
     .arguments('<url>')
     .action(url => {
@@ -20,7 +20,8 @@ program
     .option('-H, --height [height]', '浏览器首屏的高度', DEFAULT_VIEWPORT_SIZE.HEIGHT)
     .option('-o, --output-format [output-format]', '输出报告格式', DEFAULT_OUTPUT_FORMAT.CLI)
     .option('-c, --custom-path [custom-path]', '载入配置文件（default: null）')
-    .option('--cache', '是否启用缓存', DEFAULT_CACHE)
+    .option('--phone [device-name]', '是否启用手机模式（default: null）')
+    .option('--cache', '是否启用浏览器缓存', DEFAULT_CACHE)
     .option('--output-file [output-file]', '输出报告文件（default: txt）')
     .option('--wait-until [wait-until]', '加载完成的标志（default: load）')
     .option('--no-headless', '浏览器无头模式（default: true）')
