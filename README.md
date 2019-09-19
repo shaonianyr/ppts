@@ -2,6 +2,8 @@
 
 performance-puppeteer-tests
 
+<img src="https://raw.githubusercontent.com/ShaoNianyr/ppts/master/picture/Usage_Options.png">
+
 ## Installation
 
 To install ppts :
@@ -51,6 +53,8 @@ Several options are available to enhance metrics easily. Use `-h (--help)` to di
 ppts -r 100 https://www.baidu.com
 ```
 
+<img src="https://raw.githubusercontent.com/ShaoNianyr/ppts/master/picture/Settings_repeat_times.png">
+
 ### Setting no-headless
 ```shell
 ppts https://www.baidu.com --no-headless false
@@ -65,6 +69,9 @@ ppts https://www.baidu.com --cache true
 ```shell
 ppts https://www.baidu.com --phone 'iPhone X'
 ```
+<img src="https://raw.githubusercontent.com/ShaoNianyr/ppts/master/picture/Setting_phone_mode_with_iPhone_X.png">
+
+<img src="https://raw.githubusercontent.com/ShaoNianyr/ppts/master/picture/Setting_phone_errors.png">
 
 #### Support devices
 ```console
