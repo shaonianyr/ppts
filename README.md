@@ -12,6 +12,21 @@ To install ppts :
 npm install -g ppts
 ```
 
+## Measures indicators of the web performance
+```console
+Measures:
+    |  min  |  median  |  max  |  average  |  standardDeviation  |
+      最小值    中间值    最大值    平均值            方差
+
+Indicators：
+    jsHeapUsedSize             占用的堆的大小
+    jsHeapTotalSize            堆占用的总内存
+    firstPaint                 白屏时间
+    firstMeaningfulPaint       首屏时间
+    domContentLoaded           可交互时间
+    loadEventEnd               加载完成时间
+```
+
 ## Usage
 
 To run the application, just use :
