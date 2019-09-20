@@ -1,6 +1,10 @@
 # ppts
 
-performance-puppeteer-tests, based on node and puppeteer, try to measures the indicators of the web performance, including the jsHeapUsedSize, jsHeapTotalSize, firstPaint, firstMeaningfulPaint, domContentLoaded and loadEventEnd. What's more, ppts can be used to calculate the average and standardDeviation of indicators of the web performance when you repeat a specific number of time. And ppts is also support to choose the specific phone devices to emulate. See the Usage for more details.
+performance-puppeteer-tests, based on node and puppeteer, try to measures the indicators of the web performance, including the jsHeapUsedSize, jsHeapTotalSize, firstPaint, firstMeaningfulPaint, domContentLoaded and loadEventEnd. 
+
+What's more, ppts can be used to calculate the average and standardDeviation of indicators of the web performance when you repeat a specific number of time. And ppts is also support to choose the specific phone devices to emulate. 
+
+See the Usage for more details.
 
 <img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/Usage_Options.png">
 
