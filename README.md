@@ -1,6 +1,6 @@
 # ppts
 
-performance-puppeteer-tests
+performance-puppeteer-tests, based on node and puppeteer, try to measures the indicators of the web performance, including the jsHeapUsedSize, jsHeapTotalSize, firstPaint, firstMeaningfulPaint, domContentLoaded and loadEventEnd. What's more, ppts can be used to calculate the average and standardDeviation of indicators of the web performance when you repeat a specific number of time. And ppts is also support to choose the specific phone devices to emulate. See the Usage for more details.
 
 <img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/Usage_Options.png">
 
@@ -74,9 +74,14 @@ ppts -r 100 https://www.baidu.com
 ppts https://www.baidu.com --no-headless false
 ```
 
+### Setting no-sandbox (Run in Linux) 
+```shell
+ppts https://www.baidu.com --no-sandbox true
+```
+
 ### Setting complex actions as extend customs (Such as: login.js)
 ```shell
-ppts -c './login.js' https://mubu.com
+ppts -c './extend_custom/login.js' https://mubu.com
 ```
 <img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/mubu.png">
 <img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/view_the_index_after_login.png">
@@ -168,3 +173,9 @@ Pixel 2 landscape
 Pixel 2 XL
 Pixel 2 XL landscape
 ```
+
+## Useful Resources
+
+-   [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+-   [Puppeteer API](https://pptr.dev/)
+-   [metrx](https://github.com/lumapps/metrx)
