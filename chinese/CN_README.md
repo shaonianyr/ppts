@@ -11,7 +11,7 @@ performance-puppeteer-tests
 ppts npm 包安装 :
 
 ```bash
-npm install -g ppts
+npm install -g ppts --registry=https://registry.npm.taobao.org
 ```
 
 ## 对网页加载的性能指标的检测

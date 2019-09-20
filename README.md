@@ -14,7 +14,7 @@ See the Usage for more details.
 To install ppts :
 
 ```bash
-npm install -g ppts
+npm install -g ppts --registry=https://registry.npm.taobao.org
 ```
 
 ## Measures indicators of the web performance
