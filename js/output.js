@@ -13,7 +13,7 @@ const { RELEVANT_STATS } = require('./constants');
  */
 const buildTable = data => {
     console.log(chalk.green("========================================================================================"));
-    console.log(chalk.red.bold("                       performance-puppeteer-test 网页性能测试                        "));
+    console.log(chalk.red.bold("                      performance-puppeteer-tests 网页性能测试                        "));
     console.log(chalk.green("========================================================================================"));
     const head = [''].concat(RELEVANT_STATS.map(stat => chalk.blue(stat)));
 

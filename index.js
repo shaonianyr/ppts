@@ -72,14 +72,14 @@ module.exports = async function start(
             // If we want tu use a custom url, reach it before making metrics.
             logInfo(`Testing ${url}...`);
 
-            await page.goto(url).catch(errorHandler);
+            await page.goto(url, { timeout: 172800000, waitUntil: 'load' }).catch(errorHandler);
 
             if (!client) {
                 client = await page.target().createCDPSession();
                 await client.send('Performance.enable');
             }
 
-            const aggregatedData = await runMetricsExtracter(page, client, repeat, waitUntil, logStep, cache);
+            const aggregatedData = await runMetricsExtracter(url, phone, width, height, browser, page, client, repeat, waitUntil, logStep, cache);
 
             spinner.stop();
 
@@ -118,14 +118,14 @@ module.exports = async function start(
             // If we want tu use a custom url, reach it before making metrics.
             logInfo(`Testing ${url}...`);
 
-            await page.goto(url).catch(errorHandler);
+            await page.goto(url, { timeout: 172800000, waitUntil: 'load' }).catch(errorHandler);
 
             if (!client) {
                 client = await page.target().createCDPSession();
                 await client.send('Performance.enable');
             }
 
-            const aggregatedData = await runMetricsExtracter(page, client, repeat, waitUntil, logStep, cache);
+            const aggregatedData = await runMetricsExtracter(url, phone, width, height, browser, page, client, repeat, waitUntil, logStep, cache);
 
             spinner.stop();
 
