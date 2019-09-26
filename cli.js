@@ -6,7 +6,7 @@ const program = require('commander');
 
 const start = require('./');
 
-const { DEFAULT_REPEAT_TIMES, DEFAULT_CACHE, DEFAULT_OUTPUT_FORMAT, DEFAULT_VIEWPORT_SIZE } = require('./js/constants');
+const { DEFAULT_REPEAT_TIMES, DEFAULT_CACHE, DEFAULT_OUTPUT_FORMAT, DEFAULT_VIEWPORT_SIZE} = require('./js/constants');
 
 program
     .description('Description:\n  performance-puppeteer-tests\n\nAuthor:\n  Shaonian <licetianyr@163.com>')
@@ -22,6 +22,7 @@ program
     .option('-c, --custom-path [custom-path]', '载入配置文件（default: null）')
     .option('--phone [device-name]', '是否启用手机模式（default: null）')
     .option('--cache', '是否启用浏览器缓存', DEFAULT_CACHE)
+    .option('--webhook [webhook-url]', '是否启用webhook通知（default: null）')
     .option('--output-file [output-file]', '输出报告文件（default: txt）')
     .option('--wait-until [wait-until]', '加载完成的标志（default: load）')
     .option('--no-headless', '浏览器无头模式（default: true）')

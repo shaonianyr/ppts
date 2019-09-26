@@ -24,6 +24,7 @@ module.exports = async function start(
         cache = DEFAULT_CACHE,
         phone = null,
         outputFormat = DEFAULT_OUTPUT_FORMAT.DEFAULT,
+        webhook = null,
         outputFile = false,
         customPath,
         waitUntil,
@@ -85,7 +86,7 @@ module.exports = async function start(
 
             await browser.close();
 
-            return output(aggregatedData, outputFormat, outputFile);
+            return output(aggregatedData, outputFormat, outputFile, webhook, url);
         } catch (error) {
             await browser.close();
             errorHandler(error);
@@ -131,7 +132,7 @@ module.exports = async function start(
 
             await browser.close();
 
-            return output(aggregatedData, outputFormat, outputFile);
+            return output(aggregatedData, outputFormat, outputFile, webhook, url);
         } catch (error) {
             await browser.close();
             errorHandler(error);
