@@ -4,7 +4,12 @@ performance-puppeteer-tests
 
 基于 node 以及 puppeteer 开发的一款网页性能分析工具，对网页的加载收集关键性的指标，包括白屏时间，首屏时间，可交互时间等等，并可以指定次数去加载，计算平均值，方差等等。这里的指定次数为非并发，而是单次加载完成以后重新去加载，支持清除浏览器缓存的重新加载，也支持指定手机型号模拟手机web端的加载。更多详情见用法。
 
-<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/Usage_Options.png">
+## 最新版本: v1.4.0
+    版本新特性:
+        v1.4.0: 当输出格式为 json 时，支持通过 webhook 发送测试数据给群机器人
+        v1.3.0: 改变打开 url 的方式
+        v1.2.0: 支持手机模式和有无缓存等模式
+        v1.1.1: 支持对网页性能指标的测量
 
 ## 安装
 
@@ -58,6 +63,7 @@ ppts <url>
         -c, --custom-path [custom-path]      载入配置文件（default: null）
         --phone [device-name]                是否启用手机模式（default: null）
         --cache                              是否启用浏览器缓存 (default: false)
+        --webhook [webhook-url]              是否启用webhook通知（default: null）
         --output-file [output-file]          输出报告文件（default: txt）
         --wait-until [wait-until]            加载完成的标志（default: load）
         --no-headless                        浏览器无头模式（default: true）
@@ -76,7 +82,7 @@ ppts -r 100 https://www.baidu.com
 ppts https://www.baidu.com --no-headless false
 ```
 
-### 开始无沙盒模式 (适配 Linux 系统性 Chrome 的运行，不指定默认关闭无沙盒模式) 
+### 开启无沙盒模式 (适配 Linux 系统性 Chrome 的运行，不指定默认关闭无沙盒模式) 
 ```shell
 ppts https://www.baidu.com --no-sandbox true
 ```
@@ -92,8 +98,13 @@ ppts -c './extend_custom/login.js' https://mubu.com
 ```shell
 ppts https://www.baidu.com --cache true
 ```
+### 设置 webhook（不指定默认不开启 webhook，此处以企业微信群机器人为例）
+```shell
+ppts https://www.baidu.com --output-format json --webhook your-webhook-url
+```
+<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/webhook.png">
 
-### 开始手机模式并指定型号 (不指定默认为 PC 端运行）
+### 开启手机模式并指定型号 (不指定默认为 PC 端运行）
 ```shell
 ppts https://www.baidu.com --phone 'iPhone X' --no-headless false
 ```

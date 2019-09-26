@@ -7,7 +7,12 @@ What's more, ppts can be used to calculate the average and standardDeviation of 
 
 See the Usage for more details.
 
-<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/Usage_Options.png">
+## LatestVersion: v1.4.0
+    What is new:
+        v1.4.0: Support webhook function when the outputFormat is json.
+        v1.3.0: Change the methods of opening url.
+        v1.2.0: Support phone and cache model.
+        v1.1.1: Support the measurement of indicators of web performance.
 
 ## Installation
 
@@ -61,6 +66,7 @@ Several options are available to enhance metrics easily. Use `-h (--help)` to di
         -c, --custom-path [custom-path]      载入配置文件（default: null）
         --phone [device-name]                是否启用手机模式（default: null）
         --cache                              是否启用浏览器缓存 (default: false)
+        --webhook [webhook-url]              是否启用webhook通知（default: null）
         --output-file [output-file]          输出报告文件（default: txt）
         --wait-until [wait-until]            加载完成的标志（default: load）
         --no-headless                        浏览器无头模式（default: true）
@@ -95,6 +101,12 @@ ppts -c './extend_custom/login.js' https://mubu.com
 ```shell
 ppts https://www.baidu.com --cache true
 ```
+
+### Setting the webhook
+```shell
+ppts https://www.baidu.com --output-format json --webhook your-webhook-url
+```
+<img src="https://github.com/ShaoNianyr/ppts/blob/master/picture/webhook.png">
 
 ### Setting with phone mode
 ```shell
