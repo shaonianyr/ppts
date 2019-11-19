@@ -22,6 +22,14 @@ To install ppts :
 npm install -g ppts --registry=https://registry.npm.taobao.org
 ```
 
+Or:
+
+```bash
+git clone https://github.com/ShaoNianyr/ppts.git
+cd ppts
+cnpm link
+```
+
 ## Measures indicators of the web performance
 ```console
 Measures:

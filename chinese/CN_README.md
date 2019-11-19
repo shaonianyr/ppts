@@ -19,6 +19,15 @@ ppts npm 包安装 :
 npm install -g ppts --registry=https://registry.npm.taobao.org
 ```
 
+或者:
+
+```bash
+git clone https://github.com/ShaoNianyr/ppts.git
+cd ppts
+cnpm link
+```
+
+
 ## 对网页加载的性能指标的检测
 ```console
 计算结果:
