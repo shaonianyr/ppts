@@ -7,6 +7,8 @@ What's more, ppts can be used to calculate the average and standardDeviation of 
 
 See the Usage for more details.
 
+Contact me on QQ Group: 552643038
+
 ## LatestVersion: v1.4.0
     What is new:
         v1.4.0: Support webhook function when the outputFormat is json.
