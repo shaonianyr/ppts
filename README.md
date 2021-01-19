@@ -21,15 +21,8 @@ Contact me on QQ Group: 552643038
 To install ppts :
 
 ```bash
+npm config set puppeteer_download_host=https://npm.taobao.org/mirrors
 npm install -g ppts --registry=https://registry.npm.taobao.org
-```
-
-Or:
-
-```bash
-git clone https://github.com/ShaoNianyr/ppts.git
-cd ppts
-cnpm link
 ```
 
 ## Measures indicators of the web performance
